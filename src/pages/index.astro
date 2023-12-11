@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Rinaldo Pasa - Web Developer">
+  <main class="">
+    <h1>
+      <span>Hey there</span>
+      <span>I'm</span>
+      <span>Rinaldo</span>
+    </h1>
+    <p>
+      Modern aesthetics, seamless performance, websites that impress.
+      That&apos;s what I do.
+    </p>
+    <blockquote>
+      <p>
+        <strong>Website performance</strong> is just as important as a morning <strong
+          >cup of coffee.</strong
+        >
+      </p>
+      <footer>&mdash; Me 😜</footer>
+    </blockquote>
+  </main>
+</Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    margin-inline: auto;
+    padding: 2rem;
+    inline-size: min(100% - 2rem, 60rem);
+    text-align: center;
+    border: 3px solid currentColor;
+    border-block-width: 7px;
+
+    & > p {
+      max-inline-size: 50ch;
+    }
+  }
+  h1 {
+    --fill-color: var(--system-color-background);
+    --stroke-color: var(--system-color-text);
+    font-size: 7rem;
+    font-weight: 800;
+    font-stretch: 95%;
+    line-height: 1;
+    & :nth-child(1) {
+      font-stretch: 75%;
+    }
+    & :not(:nth-child(1)) {
+      display: block;
+      -webkit-text-fill-color: var(--fill-color);
+      -webkit-text-stroke: max(1px, 0.013em) var(--stroke-color);
+      text-stroke: max(1px, 0.013em) var(--stroke-color);
+    }
+  }
+
+  blockquote {
+    position: relative;
+    background-color: var(--system-color-background);
+    max-inline-size: 40ch;
+    font-size: 1rem;
+    border: 3px solid var(--system-color-shadow);
+    padding-block: 0.5ch;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 0 var(--system-color-shadow);
+
+    &::before {
+      content: "";
+      position: absolute;
+      background-image: url("/lightning.svg");
+      background-repeat: no-repeat;
+      aspect-ratio: 1;
+      width: 128px;
+      top: 0;
+      left: 0;
+      translate: -50% -50%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      aspect-ratio: 1;
+      width: 48px;
+      right: 3rem;
+      bottom: 3px;
+      background-image: url("/coffee.svg");
+      background-repeat: no-repeat;
+    }
+
+    & p::before {
+      content: "\201C";
+    }
+    & p::after {
+      content: "\201D";
+    }
+  }
+</style>

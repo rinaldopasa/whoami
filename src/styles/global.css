@@ -1,0 +1,123 @@
+@font-face {
+  font-display: swap;
+  font-family: "Bricolage";
+  src: url("/fonts/BricolageGrotesque-VF.woff2") format("woff2-variations");
+  font-weight: 200 800;
+  font-stretch: 75% 100%;
+  font-style: normal;
+}
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    line-height: 1.5;
+  }
+  :is(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
+    margin: 0;
+  }
+  :is(h1, h2, h3, h3, button, input, label) {
+    line-height: 1.1;
+  }
+  :is(h1, h2, h3, h4) {
+    text-wrap: balance;
+  }
+  :is(input, button, textarea, select) {
+    font: inherit;
+  }
+  :is(ul, ol) {
+    list-style: none;
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+    text-rendering: optimizeLegibility;
+    font-synthesis: none;
+    min-height: 100svh;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  a:not([class]) {
+    text-decoration-thickness: max(0.08em, 1px);
+    text-underline-offset: 0.15em;
+  }
+  textarea:not([rows]) {
+    min-height: 10em;
+  }
+  :target {
+    scroll-margin-block: 1rlh;
+  }
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    --outline-size: max(2px, 0.15em);
+    outline: var(--outline-size) solid currentColor;
+    outline-offset: var(--outline-size);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+    :focus-visible {
+      transition: outline-offset 0.25s cubic-bezier(0.3, 0, 0.3, 1);
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --hsl-color-background: 49.56 21% 79%;
+    --oklch-color-background: 85.56% 0.026 97.16;
+    --hsl-color-text: 140.04 12% 15%;
+    --oklch-color-text: 27.83% 0.017 155.98;
+  }
+  :root {
+    --system-color-background: hsl(var(--hsl-color-background));
+    --system-color-text: hsl(var(--hsl-color-text));
+    --system-color-shadow: hsl(var(--hsl-color-text));
+
+    --ifm-font-sans: "Bricolage", "Bricolage override";
+
+    @supports (color: oklch(0% 0 0)) {
+      & {
+        --system-color-background: oklch(var(--oklch-color-background));
+        --system-color-text: oklch(var(--oklch-color-text));
+        --system-color-shadow: oklch(var(--oklch-color-text));
+      }
+    }
+  }
+  body {
+    font-family: var(--ifm-font-sans);
+    position: relative;
+    font-size: 1.25rem;
+    background-color: var(--system-color-background);
+    color: var(--system-color-text);
+  }
+  body::after {
+    content: "";
+    position: absolute;
+    background-image: linear-gradient(
+        to bottom right,
+        hsl(0 0% 0% / 0.2),
+        hsl(0 0% 0% / 0.4)
+      ),
+      url("/texture.webp");
+    mix-blend-mode: overlay;
+    inset: 0;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .flow > * + * {
+    margin-block-start: var(--flow-space, 1em);
+  }
+}
