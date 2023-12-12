@@ -13,7 +13,7 @@ import Layout from "../layouts/Layout.astro";
               href="mailto:rinaldopasa97@gmail.com?subject=Hello There!&body=Hi Rinaldo, so I was looking at your portfolio and..."
             >
               <figure>
-                <img src="/google.svg" alt="" />
+                <img src="/google.svg" alt="" width="24" height="24" />
                 <figcaption>Email</figcaption>
               </figure>
             </a>
@@ -21,7 +21,7 @@ import Layout from "../layouts/Layout.astro";
           <li>
             <a href="https://github.com/rinaldopasa">
               <figure>
-                <img src="/github.svg" alt="" />
+                <img src="/github.svg" alt="" width="24" height="24" />
                 <figcaption>GitHub</figcaption>
               </figure>
             </a>
@@ -29,7 +29,7 @@ import Layout from "../layouts/Layout.astro";
           <li>
             <a href="#">
               <figure>
-                <img src="/linkedin-02.svg" alt="" />
+                <img src="/linkedin-02.svg" alt="" width="24" height="24" />
                 <figcaption>LinkedIn</figcaption>
               </figure>
             </a>
@@ -94,30 +94,59 @@ import Layout from "../layouts/Layout.astro";
   } */
 
   .intro {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 7px;
+    display: flex;
+    gap: 1rem;
+
+    & > :first-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
   .intro__photo {
     background-color: var(--system-color-text);
     aspect-ratio: 1;
-    width: 250px;
+    width: 200px;
   }
   .intro__social {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.7rem;
+    gap: 1rem;
     padding: 0;
 
     & li {
       position: relative;
     }
-
+    & a {
+      display: inline-block;
+      border: 2px solid var(--system-color-shadow);
+      border-radius: 12px;
+      box-shadow: 3px 3px 0 var(--system-color-shadow);
+      &:hover,
+      &:focus-within {
+        translate: 2px 2px;
+        box-shadow: unset;
+      }
+    }
     & figure {
+      padding: 7px;
       & figcaption {
         position: absolute;
         opacity: 0;
+        left: 50%;
+        padding-block-start: 1rem;
+        translate: -50% -1rem;
+        font-size: 1rem;
+        transition:
+          opacity 0.3s,
+          translate 0.3s;
+
+        .intro__social a:hover &,
+        .intro__social a:focus-within & {
+          opacity: 1;
+          translate: -50%;
+        }
       }
     }
   }
