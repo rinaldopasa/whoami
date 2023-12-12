@@ -3,12 +3,45 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Rinaldo Pasa - Web Developer">
-  <main class="">
-    <h1>
-      <span>Hey there</span>
-      <span>I'm</span>
-      <span>Rinaldo</span>
-    </h1>
+  <header class="">
+    <div class="intro">
+      <div>
+        <div class="intro__photo"></div>
+        <ul class="intro__social">
+          <li>
+            <a
+              href="mailto:rinaldopasa97@gmail.com?subject=Hello There!&body=Hi Rinaldo, so I was looking at your portfolio and..."
+            >
+              <figure>
+                <img src="/google.svg" alt="" />
+                <figcaption>Email</figcaption>
+              </figure>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/rinaldopasa">
+              <figure>
+                <img src="/github.svg" alt="" />
+                <figcaption>GitHub</figcaption>
+              </figure>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <figure>
+                <img src="/linkedin-02.svg" alt="" />
+                <figcaption>LinkedIn</figcaption>
+              </figure>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <h1>
+        <span>Hey there</span>
+        <span>I'm</span>
+        <span>Rinaldo</span>
+      </h1>
+    </div>
     <p>
       Modern aesthetics, seamless performance, websites that impress.
       That&apos;s what I do.
@@ -21,11 +54,14 @@ import Layout from "../layouts/Layout.astro";
       </p>
       <footer>&mdash; Me 😜</footer>
     </blockquote>
-  </main>
+  </header>
+
+  <main></main>
 </Layout>
 
 <style>
-  main {
+  header {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -40,7 +76,52 @@ import Layout from "../layouts/Layout.astro";
     & > p {
       max-inline-size: 50ch;
     }
+
+    /* &::before {
+      content: "";
+      inset: 0;
+      position: absolute;
+      background-image: url("/process-dash.svg");
+      background-repeat: no-repeat;
+      background-position: center calc(50% - 3rem);
+      mix-blend-mode: multiply;
+      opacity: 0.15;
+    } */
   }
+  /* .process {
+    position: absolute;
+    width: 50vw;
+  } */
+
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 7px;
+  }
+  .intro__photo {
+    background-color: var(--system-color-text);
+    aspect-ratio: 1;
+    width: 250px;
+  }
+  .intro__social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.7rem;
+    padding: 0;
+
+    & li {
+      position: relative;
+    }
+
+    & figure {
+      & figcaption {
+        position: absolute;
+        opacity: 0;
+      }
+    }
+  }
+
   h1 {
     --fill-color: var(--system-color-background);
     --stroke-color: var(--system-color-text);
@@ -48,14 +129,18 @@ import Layout from "../layouts/Layout.astro";
     font-weight: 800;
     font-stretch: 95%;
     line-height: 1;
+    text-align: start;
     & :nth-child(1) {
       font-stretch: 75%;
     }
     & :not(:nth-child(1)) {
       display: block;
-      -webkit-text-fill-color: var(--fill-color);
-      -webkit-text-stroke: max(1px, 0.013em) var(--stroke-color);
-      text-stroke: max(1px, 0.013em) var(--stroke-color);
+      color: var(--fill-color);
+      text-shadow:
+        -2px -2px 0 var(--stroke-color, #000),
+        2px -2px 0 var(--stroke-color, #000),
+        -2px 2px 0 var(--stroke-color, #000),
+        2px 2px 0 var(--stroke-color, #000);
     }
   }
 
@@ -65,7 +150,7 @@ import Layout from "../layouts/Layout.astro";
     max-inline-size: 40ch;
     font-size: 1rem;
     border: 3px solid var(--system-color-shadow);
-    padding-block: 0.5ch;
+    padding: 0.5ch 3ch;
     border-radius: 1rem;
     box-shadow: 3px 3px 0 var(--system-color-shadow);
 
@@ -84,12 +169,13 @@ import Layout from "../layouts/Layout.astro";
     &::after {
       content: "";
       position: absolute;
-      aspect-ratio: 1;
-      width: 48px;
-      right: 3rem;
-      bottom: 3px;
       background-image: url("/coffee.svg");
       background-repeat: no-repeat;
+      aspect-ratio: 1;
+      width: 64px;
+      right: 0;
+      bottom: 0;
+      translate: 0 1.3rem;
     }
 
     & p::before {

@@ -44,6 +44,10 @@
   p {
     text-wrap: pretty;
   }
+  img {
+    max-width: 100%;
+    display: block;
+  }
   a:not([class]) {
     text-decoration-thickness: max(0.08em, 1px);
     text-underline-offset: 0.15em;
@@ -90,6 +94,7 @@
       & {
         --system-color-background: oklch(var(--oklch-color-background));
         --system-color-text: oklch(var(--oklch-color-text));
+
         --system-color-shadow: oklch(var(--oklch-color-text));
       }
     }
@@ -113,6 +118,23 @@
     mix-blend-mode: overlay;
     inset: 0;
     pointer-events: none;
+  }
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    /* background-color: hsl(var(--hsl-color-background) / 0.37); */
+    background-image: url("/texture.webp"),
+      linear-gradient(
+        to bottom,
+        hsl(var(--hsl-color-background) / 0.63),
+        hsl(var(--hsl-color-background) / 0.63)
+      );
+    background-blend-mode: darken;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--system-color-shadow);
+    border: 2px solid var(--system-color-background);
   }
 }
 
