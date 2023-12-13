@@ -1,0 +1,74 @@
+---
+import Hamburger from "./Hamburger.astro";
+import Navigation from "./Navigation.astro";
+---
+
+<header class="sticky-header">
+  <div class="logo">
+    <img src="/logo.svg" alt="R Logo" width="44" height="44" />
+    <img
+      src="/smiling-face.webp"
+      alt=""
+      width="44"
+      height="44"
+      aria-hidden="true"
+    />
+  </div>
+  <nav>
+    <Navigation />
+  </nav>
+  <Hamburger />
+</header>
+
+<style>
+  .sticky-header {
+    position: sticky;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    max-inline-size: 300px;
+    background-color: var(--system-color-background);
+    color: var(--system-color-text);
+    margin-inline: auto;
+    padding: 1ch 1.3ch;
+    border: 2px solid var(--system-color-shadow);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--system-color-shadow);
+    top: 1.5rem;
+    z-index: 8;
+    will-change: transform;
+
+    & .logo {
+      --size: 40px;
+      display: grid;
+      place-content: center;
+      position: relative;
+      border: 2px solid var(--system-color-shadow);
+      border-radius: 12px;
+      box-shadow: 3px 3px 0 var(--system-color-shadow);
+      aspect-ratio: 1;
+      width: var(--size);
+      min-width: var(--size);
+      overflow: hidden;
+    }
+
+    & img {
+      height: auto;
+      transition: scale 0.25s;
+
+      .logo:hover &:first-of-type {
+        scale: 0;
+      }
+
+      &:last-of-type {
+        position: absolute;
+        scale: 0;
+
+        .logo:hover & {
+          scale: 1.25;
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,36 @@
+<ul class="nav-links">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Project</a></li>
+  <li><a href="#">Notes</a></li>
+</ul>
+
+<style>
+  .nav-links {
+    display: none;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    &.expanded {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 2rem;
+      padding: 1ch;
+      background-color: var(--system-color-background);
+      border: 2px solid var(--system-color-shadow);
+      border-radius: 12px;
+      box-shadow: 3px 3px 0 var(--system-color-shadow);
+    }
+
+    & a {
+      font-family: var(--ifm-font-mono);
+      font-size: var(--system-fontSize-small);
+    }
+  }
+
+  @container layout (inline-size > 300px) {
+    .nav-links {
+      display: flex;
+    }
+  }
+</style>

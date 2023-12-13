@@ -1,0 +1,52 @@
+<button class="m-menu">
+  <span>&nbsp;</span>
+  <span>&nbsp;</span>
+  <span>&nbsp;</span>
+</button>
+
+<style>
+  .m-menu {
+    --size: 40px;
+    aspect-ratio: 1;
+    width: var(--size);
+    background-color: #fff3dc;
+    border: 2px solid var(--system-color-shadow);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--system-color-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    transition:
+      translate 0.1s,
+      rotate 0.25s;
+
+    &:hover {
+      translate: 2px 2px;
+      box-shadow: none;
+    }
+
+    &.active {
+      background-color: var(--system-color-shadow);
+      rotate: 90deg;
+      box-shadow: none;
+    }
+
+    & > span {
+      aspect-ratio: 1;
+      height: 7px;
+      background-color: var(--system-color-shadow);
+      border-radius: 12px;
+
+      .m-menu.active & {
+        background-color: var(--system-color-background);
+      }
+    }
+  }
+
+  @container layout (inline-size > 300px) {
+    .m-menu {
+      display: none;
+    }
+  }
+</style>
