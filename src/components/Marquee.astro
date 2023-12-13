@@ -25,18 +25,14 @@
     overflow: hidden;
     user-select: none;
     background-color: hsl(var(--hsl-color-text) / 0.3);
-    rotate: 2deg;
-    mask: linear-gradient(
-      90deg,
-      transparent,
-      white 20%,
-      white 80%,
-      transparent
-    );
+    mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
 
     &.cdcb {
+      position: absolute;
+      inset-inline: 0;
       --flow-space: 0.3em;
       z-index: -3;
+      transform: skew(0, 2deg);
     }
   }
 
