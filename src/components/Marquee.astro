@@ -1,0 +1,94 @@
+<div class="marquee cdcb">
+  <ul class="marquee__content">
+    <li>Create</li>
+    <li>Design</li>
+    <li>Code</li>
+    <li>Build</li>
+    <li>For Everyone</li>
+  </ul>
+  <!-- Mirror the content above -->
+  <ul class="marquee__content" aria-hidden="true">
+    <li>Create</li>
+    <li>Design</li>
+    <li>Code</li>
+    <li>Build</li>
+    <li>For Everyone</li>
+  </ul>
+</div>
+
+<style>
+  .marquee {
+    --gap: 5cqi;
+    position: relative;
+    display: flex;
+    gap: var(--gap);
+    overflow: hidden;
+    user-select: none;
+    background-color: hsl(var(--hsl-color-text) / 0.3);
+    rotate: 2deg;
+    mask: linear-gradient(
+      90deg,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+
+    &.cdcb {
+      --flow-space: 0.3em;
+      z-index: -3;
+    }
+  }
+
+  .marquee__content {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: var(--gap);
+    animation: 30s linear infinite scroll;
+    font-size: clamp(1.75rem, 8cqi, 3rem);
+    font-weight: 800;
+    color: var(--system-color-background);
+    text-transform: uppercase;
+
+    .marquee--hover-pause:hover & {
+      animation-play-state: paused;
+    }
+
+    .marquee--pos-absolute &:last-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation-name: scroll-abs;
+    }
+  }
+
+  .marquee--fit-content {
+    max-width: fit-content;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__content {
+      animation-play-state: paused !important;
+    }
+  }
+
+  @keyframes scroll {
+    from {
+      translate: 0;
+    }
+    to {
+      translate: calc(-100% - var(--gap));
+    }
+  }
+
+  @keyframes scroll-abs {
+    from {
+      translate: calc(100% + var(--gap));
+    }
+    to {
+      translate: 0;
+    }
+  }
+</style>

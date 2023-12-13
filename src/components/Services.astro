@@ -1,0 +1,85 @@
+<article class="services">
+  <h2>Lookin&apos; for some assistance? Well, reckon I can lend a hand</h2>
+
+  <div class="card-wrapper">
+    <article class="services__card">
+      <header>
+        <img src="/scratch.svg" alt="" width="64" height="64" />
+        <h3>Building a new website from scratch</h3>
+      </header>
+      <p>
+        Following best practices, I can design and develop a functional and
+        beautiful website from the ground and deliver the best possible UX.
+      </p>
+    </article>
+    <article class="services__card">
+      <header>
+        <img src="/maintenence.svg" alt="" width="64" height="64" />
+        <h3>Maintenance or design and development of your current site</h3>
+      </header>
+      <p>
+        If you already have a website but need assistance maintaining it or
+        adding new features, I can help with that too.
+      </p>
+    </article>
+    <article class="services__card">
+      <header>
+        <img src="/redesign.svg" alt="" width="64" height="64" />
+        <h3>Redesign your website</h3>
+      </header>
+      <p>
+        If your existing website needs a redesign, I can work with you to
+        modernize your web design project, improve functionality, and enhance
+        the user experience.
+      </p>
+    </article>
+  </div>
+</article>
+
+<style>
+  .services {
+    --flow-space: 2em;
+    --gap: 12px;
+    text-align: center;
+
+    & h2 {
+      margin-inline: auto;
+      max-inline-size: 30ch;
+    }
+  }
+
+  .card-wrapper {
+    --min: 25ch;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    margin-block: 2rem;
+
+    & > * {
+      flex: 1 1 var(--min);
+    }
+  }
+
+  .services__card {
+    --space: 64px;
+    inline-size: fit-content;
+    text-align: start;
+    padding: 0.75rem;
+    border: 3px solid var(--system-color-shadow);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--system-color-shadow);
+
+    & header {
+      display: flex;
+      align-items: center;
+      gap: var(--gap);
+    }
+
+    & p {
+      margin-block-start: 1ch;
+      margin-inline-start: calc(var(--space) + var(--gap));
+      /* max-inline-size: 30ch; */
+    }
+  }
+</style>

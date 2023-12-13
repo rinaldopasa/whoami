@@ -1,0 +1,134 @@
+<article class="project">
+  <h2>Let&apos;s look at some of my projects</h2>
+
+  <div class="flow">
+    <article class="project__card">
+      <div>
+        <h3>COVID-19 Tracker</h3>
+        <p>
+          A simple website that tracks the number of confirmed, recovered, and
+          deaths in the world.
+        </p>
+        <a href="https://github.com/rinaldopasa/covid-19-tracker">GitHub</a>
+        <a
+          href="https://rinaldopasa.github.io/covid-19-tracker/"
+          target="_blank"
+          rel="noopener noreferrer">Visit</a
+        >
+      </div>
+      <img
+        src="/covid.webp"
+        alt="Homepage of covid-19 tracker"
+        width="200"
+        height="48"
+      />
+    </article>
+    <article class="project__card">
+      <div>
+        <h3>Lapar? - Find Best Restaurants</h3>
+        <p>A website that helps you find the best restaurants in your city.</p>
+        <a href="https://github.com/rinaldopasa/lapar-app">GitHub</a>
+        <a
+          href="https://lapar-app.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer">Visit</a
+        >
+      </div>
+      <img
+        src="/lapar.webp"
+        alt="Homepage of lapar app"
+        width="200"
+        height="48"
+      />
+    </article>
+    <article class="project__card">
+      <div>
+        <h3>Word Game</h3>
+        <p>A simple game where you have to guess the word in 6 tries.</p>
+        <a href="https://github.com/rinaldopasa/word-game">GitHub</a>
+        <a
+          href="https://rp-wordle.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer">Visit</a
+        >
+      </div>
+      <img
+        src="/wordle.webp"
+        alt="Homepage of wordle game"
+        width="200"
+        height="48"
+      />
+    </article>
+  </div>
+</article>
+
+<style>
+  .project {
+    --flow-space: 3em;
+    --color: var(--system-color-background);
+    position: relative;
+    color: var(--color);
+    padding-block: 2rem;
+    text-align: center;
+    &::before {
+      content: "";
+      background-color: var(--system-color-shadow);
+      inset: 0;
+      position: absolute;
+      z-index: -3;
+      transform: skew(0, -2deg);
+      scale: 1.1;
+    }
+
+    & h2 {
+      margin-block-end: 3rem;
+    }
+  }
+
+  .project__card {
+    text-align: start;
+    display: grid;
+    gap: 1rem;
+
+    & img {
+      height: auto;
+    }
+
+    & p {
+      margin-block-end: 1ch;
+    }
+
+    & a {
+      display: inline-block;
+      border: 1px solid var(--system-color-background);
+      border-radius: 0.5rem;
+      padding: 0.5ch 0.7ch;
+      text-decoration: none;
+      font-size: var(--system-fontSize-small);
+      box-shadow: 2px 2px 0 var(--system-color-background);
+
+      &:is(:hover, :focus-within) {
+        translate: 2px 2px;
+        box-shadow: none;
+      }
+
+      & + a {
+        margin-inline-start: 0.5ch;
+      }
+    }
+  }
+
+  @container layout (inline-size > 640px) {
+    .project__card {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+
+      & img {
+        grid-column: span 2;
+      }
+
+      & > div {
+        grid-column: span 6;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,231 @@
+<div class="intro-wrapper">
+  <article class="intro">
+    <header>
+      <h1 class="intro__title">
+        <span>Hey there</span>
+        <span>I'm</span>
+        <span>Rinaldo</span>
+      </h1>
+      <div>
+        <div class="intro__photo">
+          <img src="/lol.webp" alt="Rinaldo face" width="180" height="180" />
+        </div>
+        <ul class="intro__social">
+          <li>
+            <a
+              href="mailto:rinaldopasa97@gmail.com?subject=Hello There!&body=Hi Rinaldo, so I was looking at your portfolio and..."
+            >
+              <figure>
+                <img src="/google.svg" alt="" width="24" height="24" />
+                <figcaption>Email</figcaption>
+              </figure>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/rinaldopasa">
+              <figure>
+                <img src="/github.svg" alt="" width="24" height="24" />
+                <figcaption>GitHub</figcaption>
+              </figure>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <figure>
+                <img src="/linkedin-02.svg" alt="" width="24" height="24" />
+                <figcaption>LinkedIn</figcaption>
+              </figure>
+            </a>
+          </li>
+        </ul>
+        <img
+          class="process-dash"
+          src="/process-dash.svg"
+          alt=""
+          aria-hidden="true"
+        />
+      </div>
+    </header>
+    <p>
+      Modern aesthetics, seamless performance, websites that impress.
+      <strong>That&apos;s what I do</strong>.
+    </p>
+    <blockquote>
+      <p>
+        <strong>Web performance</strong> is just as important as a morning <strong
+          >cup of coffee</strong
+        >.
+      </p>
+      <footer>&mdash; Me 😜</footer>
+    </blockquote>
+  </article>
+</div>
+
+<style>
+  .intro-wrapper {
+    container: intro / inline-size;
+  }
+
+  .intro {
+    --gap: 1rem;
+    display: grid;
+    place-items: center;
+    gap: var(--gap);
+    text-align: center;
+
+    & header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+
+      & div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--gap);
+      }
+    }
+
+    & p {
+      max-inline-size: 40ch;
+      text-align: center;
+    }
+  }
+
+  .intro__photo {
+    background-color: var(--system-color-text);
+    aspect-ratio: 1;
+    width: 180px;
+    border: 3px solid var(--system-color-shadow);
+    border-radius: 12px;
+    overflow: hidden;
+
+    & img {
+      object-fit: cover;
+      rotate: 90deg;
+      /* height: auto; */
+    }
+  }
+  .intro__social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+
+    & li {
+      position: relative;
+    }
+    & a {
+      display: inline-block;
+      background-color: var(--system-color-background);
+      border: 2px solid var(--system-color-shadow);
+      border-radius: 12px;
+      box-shadow: 3px 3px 0 var(--system-color-shadow);
+      transition: translate 0.1s;
+      &:is(:hover, :focus-within) {
+        translate: 2px 2px;
+        box-shadow: unset;
+      }
+    }
+    & figure {
+      padding: 7px;
+      & figcaption {
+        position: absolute;
+        font-size: var(--system-fontSize-small);
+        opacity: 0;
+        left: 50%;
+        padding-block-start: 1rem;
+        translate: -50% -1rem;
+        transition:
+          opacity 0.3s,
+          translate 0.3s;
+        .intro__social a:is(:hover, focus-within) & {
+          opacity: 1;
+          translate: -50%;
+        }
+      }
+    }
+  }
+  .intro__title {
+    --fill-color: var(--system-color-background);
+    --stroke-color: var(--system-color-text);
+    font-size: clamp(4rem, 20cqi, 6rem);
+    font-weight: 800;
+    font-stretch: 95%;
+    line-height: 1;
+    text-align: start;
+    & :nth-child(1) {
+      font-stretch: 75%;
+    }
+    & :not(:nth-child(1)) {
+      display: block;
+      color: var(--fill-color);
+      text-shadow:
+        -2px -2px 0 var(--stroke-color, #000),
+        2px -2px 0 var(--stroke-color, #000),
+        -2px 2px 0 var(--stroke-color, #000),
+        2px 2px 0 var(--stroke-color, #000);
+    }
+  }
+  .process-dash {
+    position: absolute;
+    left: 50%;
+    translate: -50% 2rem;
+    opacity: 0.15;
+    z-index: -9;
+    pointer-events: none;
+  }
+  blockquote {
+    font-family: var(--ifm-font-mono);
+    position: relative;
+    background-color: var(--system-color-background);
+    max-inline-size: 40ch;
+    font-size: 14px;
+    border: 3px solid var(--system-color-shadow);
+    padding: 0.5ch 2ch;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 0 var(--system-color-shadow);
+    rotate: -1deg;
+
+    &::before {
+      content: "";
+      position: absolute;
+      background-image: url("/lightning.svg");
+      background-repeat: no-repeat;
+      aspect-ratio: 1;
+      width: 96px;
+      top: 0;
+      left: 0;
+      translate: -40% -50%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-image: url("/coffee.svg");
+      background-repeat: no-repeat;
+      aspect-ratio: 1;
+      width: 64px;
+      right: 0;
+      bottom: 0;
+      translate: 0 1.3rem;
+    }
+
+    & p::before {
+      content: open-quote;
+    }
+    & p::after {
+      content: close-quote;
+    }
+  }
+
+  @container intro (inline-size > 600px) {
+    .intro {
+      & header {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+</style>
